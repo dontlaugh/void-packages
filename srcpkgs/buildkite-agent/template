@@ -1,0 +1,19 @@
+pkgname=buildkite-agent
+version=3.39.1
+revision=3
+build_style="go"
+go_import_path="github.com/buildkite/agent/v3"
+wrksrc="agent-${version}"
+maintainer="Coleman McFarland <coleman@de.limited>"
+homepage="https://github.com/buildkite/agent"
+license="MIT"
+depends="dbus"
+# system_accounts="_buildkite"
+short_desc="self-hosted agent for Buildkite CI"
+distfiles="https://github.com/buildkite/agent/archive/refs/tags/v${version}.tar.gz"
+checksum="37d03d197f2ce0b66afc8aa4dfc736509178b7fa5bcd10a893a202fac9661c25"
+
+post_install() {
+  mv ${DESTDIR}/usr/bin/agent ${DESTDIR}/usr/bin/buildkite-agent
+}
+
