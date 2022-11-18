@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+set -e
+git switch dev
+git pull origin dev
+git fetch upstream master:master
+git merge --no-ff master
+git push origin dev
