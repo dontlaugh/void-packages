@@ -1,6 +1,8 @@
 steps:
-  - label: ":pipeline:"
+  - label: ":pipeline: build buildkite-agent"
     commands:
       - "./xbps-src binary-bootstrap"
       - "./xbps-src build buildkite-agent"
       - "./xbps-src pkg buildkite-agent"
+      - "./scripts/upload buildkite-agent"
+

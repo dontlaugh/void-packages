@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eu 
+
+PKG=$1
+
+BUILT_PKG=$(./xbps-src show buildkite-agent | awk -v pkg=$PKG '
+  /^version:/  { printf "%s-%s", pkg, $2      }
+  /^revision:/ { printf "_%s.x86_64.xbps", $2 }
+')
+
+buildkite-agent artifact upload "hostdir/binpkgs/${BUILT_PKG}"
+
